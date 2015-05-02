@@ -21,29 +21,29 @@ HOW TO USE IT?
 1. Well decide how many entries you need in each register and the type
 2. Modify the configuration to match your register map:
 
-#define IDENTIFICATION_REGISTER_OFFSET   0x0
-#define STATUS_REGISTER_OFFSET 0x8 // First register of the status register (If no status register, use the last register of the Identification region)
-#define DATA_REGISTER_OFFSET 0x8 // First register of the data register (If no data register, use the last register of the status region)
-#define CONFIGURATION_REGISTER_OFFSET 0x8 // First register of the configuration register (If no configuration register, use the last register of the data region)
-#define LAST_REGISTER_OFFSET 0x8 
+\#define IDENTIFICATION_REGISTER_OFFSET   0x0
+\#define STATUS_REGISTER_OFFSET 0x8 // First register of the status register (If no status register, use the last register of the Identification region)
+\#define DATA_REGISTER_OFFSET 0x8 // First register of the data register (If no data register, use the last register of the status region)
+\#define CONFIGURATION_REGISTER_OFFSET 0x8 // First register of the configuration register (If no configuration register, use the last register of the data region)
+\#define LAST_REGISTER_OFFSET 0x8 
 
 This configuration has only an IDENTIFICATION register with 8 bytes 0x0-0x7.
 The status register would start in 0x8, but does not contain any element because the DATA register would also start in 0x8, which also does not contain any element because the CONFIGURATION register
 would also start in 0x8, which happens to be where the LAST_REGISTER (the next valid byte) would start.
 
 If you would like to have a CONFIGURATION register with 2 bytes, then you could use this config:
-#define IDENTIFICATION_REGISTER_OFFSET   0x0
-#define STATUS_REGISTER_OFFSET 0x8 // First register of the status register (If no status register, use the last register of the Identification region)
-#define DATA_REGISTER_OFFSET 0x8 // First register of the data register (If no data register, use the last register of the status region)
-#define CONFIGURATION_REGISTER_OFFSET 0x8 // First register of the configuration register (If no configuration register, use the last register of the data region)
-#define LAST_REGISTER_OFFSET 0x10 // Last valid register of the I2C device.
+\#define IDENTIFICATION_REGISTER_OFFSET   0x0
+\#define STATUS_REGISTER_OFFSET 0x8 // First register of the status register (If no status register, use the last register of the Identification region)
+\#define DATA_REGISTER_OFFSET 0x8 // First register of the data register (If no data register, use the last register of the status region)
+\#define CONFIGURATION_REGISTER_OFFSET 0x8 // First register of the configuration register (If no configuration register, use the last register of the data region)
+\#define LAST_REGISTER_OFFSET 0x10 // Last valid register of the I2C device.
 
 If, in addition, you would like to have a STATUS register with 3 bytes, then you could use this config:
-#define IDENTIFICATION_REGISTER_OFFSET   0x0
-#define STATUS_REGISTER_OFFSET 0x8 // First register of the status register (If no status register, use the last register of the Identification region)
-#define DATA_REGISTER_OFFSET 0x11 // First register of the data register (If no data register, use the last register of the status region)
-#define CONFIGURATION_REGISTER_OFFSET 0x11 // First register of the configuration register (If no configuration register, use the last register of the data region)
-#define LAST_REGISTER_OFFSET 0x13 // Last valid register of the I2C device.
+\#define IDENTIFICATION_REGISTER_OFFSET   0x0
+\#define STATUS_REGISTER_OFFSET 0x8 // First register of the status register (If no status register, use the last register of the Identification region)
+\#define DATA_REGISTER_OFFSET 0x11 // First register of the data register (If no data register, use the last register of the status region)
+\#define CONFIGURATION_REGISTER_OFFSET 0x11 // First register of the configuration register (If no configuration register, use the last register of the data region)
+\#define LAST_REGISTER_OFFSET 0x13 // Last valid register of the I2C device.
 
 3. Modify the data structure to indicate the data and its values (it may have int, long or any other data type, the code sends the corresponding bytes for you)
 
@@ -57,20 +57,20 @@ unsigned char SerialCRC[1];   // 0x7
 4. Define the values of the IDENTIFICATION register
 
 // identification register information
-#define SERIAL_N_FAM_DEV_CODE 0xFF // 0xFF for development product
-#define SERIAL_N_0 0xFF            // 0xFF for development product
-#define SERIAL_N_1 0xFF            // 0xFF for development product
-#define SERIAL_N_2 0xFF            // 0xFF for development product
-#define SERIAL_N_3 0xFF            // 0xFF for development product
-#define SERIAL_N_4 0xFF            // 0xFF for development product
-#define SERIAL_N_5 0xFF            // 0xFF for development product
-#define SERIAL_N_CRC 0xFF          // The CRC, we did not agree to a CRC yet and FABtotum does not check it so 0xFF for development
+\#define SERIAL_N_FAM_DEV_CODE 0xFF // 0xFF for development product
+\#define SERIAL_N_0 0xFF            // 0xFF for development product
+\#define SERIAL_N_1 0xFF            // 0xFF for development product
+\#define SERIAL_N_2 0xFF            // 0xFF for development product
+\#define SERIAL_N_3 0xFF            // 0xFF for development product
+\#define SERIAL_N_4 0xFF            // 0xFF for development product
+\#define SERIAL_N_5 0xFF            // 0xFF for development product
+\#define SERIAL_N_CRC 0xFF          // The CRC, we did not agree to a CRC yet and FABtotum does not check it so 0xFF for development
 
 5. Define the SLAVE ADDRESS
 
 /*** FABTOTUM STANDARDIZED VALUES - DO NOT CHANGE UNLESS FABLIN CHANGES THEM - ***/
 
-#define SERIAL_ID_ADDR                   80 
+\#define SERIAL_ID_ADDR                   80 
 
 6. Load the IDENTIFICATION register in setup():
 
